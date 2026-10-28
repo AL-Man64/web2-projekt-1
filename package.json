@@ -1,0 +1,36 @@
+{
+    "name": "web2-projekt-1",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/main.ts",
+    "scripts": {
+        "build": "tsc",
+        "start": "node dist/main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AL-Man64/web2-projekt-1.git"
+    },
+    "keywords": [],
+    "author": "AL-Man64",
+    "license": "AGPL-3.0-only",
+    "bugs": {
+        "url": "https://github.com/AL-Man64/web2-projekt-1/issues"
+    },
+    "homepage": "https://github.com/AL-Man64/web2-projekt-1#readme",
+    "type": "module",
+    "devDependencies": {
+        "@types/express": "^5.0.6",
+        "typescript": "^7.0.2"
+    },
+    "dependencies": {
+        "dotenv": "^18.0.9",
+        "express": "^5.3.0"
+    },
+    "prettier": {
+        "printWidth": 100,
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    }
+}
