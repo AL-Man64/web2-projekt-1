@@ -1,0 +1,28 @@
+extends _base.pug
+
+block content
+    if user
+        p Welcome, #{user.name}!
+        nav
+            a(href='/logout') Log out
+
+    else
+        nav
+            a(href='/login') Log in
+            a(href='/signup') Sign up
+
+    section
+        p There's a total of #{total} passes and #{active} active passes in the system
+
+    if user
+        section
+            h2 Passes
+            each pass in passes
+                div
+                    a(href=`/info/${pass.id}`) #{pass.name} - #{pass.document}
+                    if pass.status === 'ACTIVE'
+                        form(action=`/cancelPass/${pass.id}` method='POST')
+                            button(type='submit') Cancel
+                    form(action=`/deletePass/${pass.id}` method='POST')
+                        button(type='submit') Delete
+                br

@@ -8,6 +8,10 @@
         // Environment Settings
         // See also https://aka.ms/tsconfig/module
         "module": "nodenext",
+        "moduleResolution": "nodenext",
+
+        "rewriteRelativeImportExtensions": true,
+        "erasableSyntaxOnly": true,
 
         "types": [],
 
@@ -36,5 +40,6 @@
         "noUncheckedSideEffectImports": true,
         "moduleDetection": "force",
         "skipLibCheck": true
-    }
+    },
+    "include": ["src/**/*"]
 }
