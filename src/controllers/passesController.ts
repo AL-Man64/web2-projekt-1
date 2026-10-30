@@ -1,4 +1,4 @@
-import type { RequestHandler } from 'express'
+import type { Request, Response } from 'express'
 import * as passesService from '../services/passesService.ts'
 import * as utils from '../utils.ts'
 
@@ -6,7 +6,7 @@ import qr from 'qrcode'
 
 const baseUrl = utils.getEnvVar('BASE_URL', 'http://localhost:3000')
 
-export const getPass: RequestHandler = async (req, res) => {
+export async function getPass(req: Request, res: Response) {
     let id = req.params['id']!
     if (typeof id !== 'string') {
         res.status(400)
@@ -24,7 +24,7 @@ export const getPass: RequestHandler = async (req, res) => {
     res.send(pass)
 }
 
-export const createPass: RequestHandler = async (req, res) => {
+export async function createPass(req: Request, res: Response) {
     const name = req.body['name']
     const document = req.body['document']
 

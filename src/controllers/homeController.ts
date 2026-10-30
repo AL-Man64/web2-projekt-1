@@ -1,9 +1,9 @@
-import type { RequestHandler } from 'express'
+import type { Request, Response } from 'express'
 
 import * as passesService from '../services/passesService.ts'
 import { resolvePassDate, type Pass } from '../viewModels.ts'
 
-export const home: RequestHandler = async (req, res) => {
+export async function home(req: Request, res: Response) {
     const { total, active } = await passesService.getTotalPasses()
 
     let passes: Pass[] = []
@@ -14,7 +14,7 @@ export const home: RequestHandler = async (req, res) => {
     res.render('index', { total, active, user: req.oidc.user, passes })
 }
 
-export const info: RequestHandler = async (req, res) => {
+export async function info(req: Request, res: Response) {
     const id = req.params['id']!
     if (typeof id !== 'string') {
         res.sendStatus(400)
@@ -32,14 +32,14 @@ export const info: RequestHandler = async (req, res) => {
     res.render('info', { pass: pass })
 }
 
-export const signup: RequestHandler = (_req, res) => {
+export async function signup(_req: Request, res: Response) {
     res.oidc.login({
         returnTo: '/',
         authorizationParams: { screen_hint: 'signup' },
     })
 }
 
-export const deletePass: RequestHandler = async (req, res) => {
+export async function deletePass(req: Request, res: Response) {
     const id = req.params['id']!
     if (typeof id !== 'string') {
         res.sendStatus(400)
@@ -50,7 +50,7 @@ export const deletePass: RequestHandler = async (req, res) => {
     res.redirect(303, '/')
 }
 
-export const cancelPass: RequestHandler = async (req, res) => {
+export async function cancelPass(req: Request, res: Response) {
     const id = req.params['id']!
     if (typeof id !== 'string') {
         res.sendStatus(400)
