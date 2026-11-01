@@ -7,7 +7,7 @@ export async function getToken(
     clientSecret: string,
     scope: string,
 ): Promise<string> {
-    const res = await fetch(authority, {
+    const res = await fetch(`${authority}/oauth/token`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
